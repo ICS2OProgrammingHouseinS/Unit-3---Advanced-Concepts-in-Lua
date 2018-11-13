@@ -97,6 +97,8 @@ function scene:create( event )
             defaultFile = "Images/PlayButtonHouseinShaib.png",
             overFile = "Images/Start Button Pressed.png",
 
+            defaultFile.xScale = defaultFile.xScale/2,
+
             -- When the button is released, call the Level1 screen transition function
             onRelease = Level1ScreenTransition          
         } )
