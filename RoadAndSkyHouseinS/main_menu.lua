@@ -94,10 +94,8 @@ function scene:create( event )
             y = display.contentHeight*7/8,
 
             -- Insert the images here
-            defaultFile = "Images/PlayButtonHouseinShaib.png",
-            overFile = "Images/Start Button Pressed.png",
-
-            defaultFile.xScale = defaultFile.xScale/2,
+            defaultFile = "Images/SquareButtonUnpressedHouseinShiab@2x.png",
+            overFile = "Images/SquareButtonPressedHouseinShaib@2x.png",
 
             -- When the button is released, call the Level1 screen transition function
             onRelease = Level1ScreenTransition          

@@ -7,6 +7,9 @@
 -- company logo that...
 -----------------------------------------------------------------------------------------
 
+-- Hides the status bar
+display.setStatusBar(display.HiddenStatusBar)
+
 -- Use Composer Library
 local composer = require( "composer" )
 
@@ -23,20 +26,31 @@ local scene = composer.newScene( sceneName )
 -----------------------------------------------------------------------------------------
  
 -- The local variables for this scene
-local beetleship
-local scrollXSpeed = 8
-local scrollYSpeed = -3
-local jungleSounds = audio.loadSound("Sounds/animals144.mp3")
-local jungleSoundsChannel
+local companyLogo
+local scrollSpeedCompanyLogo = 7
+local woosh = audio.loadSound("Sounds/companyLogoSound.mp3")
+local wooshChannel
 
 --------------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
 --------------------------------------------------------------------------------------------
 
--- The function that moves the beetleship across the screen
-local function moveBeetleship()
-    beetleship.x = beetleship.x + scrollXSpeed
-    beetleship.y = beetleship.y + scrollYSpeed
+-- This function plays the woosh sound
+local function PlaySound()
+    wooshChannel = audio.play(woosh)
+end
+
+-- Plays woosh sound
+timer.performWithDelay(3794, PlaySound)
+
+-- This function moves the logo
+local function MoveLogo(event)
+    companyLogo.y = companyLogo.y + scrollSpeedCompanyLogo
+
+    if (companyLogo.y > display.contentCenterY) then
+        scrollSpeedCompanyLogo = 0
+        companyLogo.alpha = companyLogo.alpha - 0.007
+    end
 end
 
 -- The function that will go to the main menu 
@@ -57,15 +71,13 @@ function scene:create( event )
     -- set the background to be black
     display.setDefault("background", 0, 0, 0)
 
-    -- Insert the beetleship image
-    beetleship = display.newImageRect("Images/beetleship.png", 200, 200)
-
-    -- set the initial x and y position of the beetleship
-    beetleship.x = 100
-    beetleship.y = display.contentHeight/2
+    -- Insert the company logo image
+    companyLogo = display.newImageRect("Images/CompanyLogoHouseinS@2x.png", 1025, 769)
+    companyLogo.x = display.contentCenterX
+    companyLogo.y = -display.contentHeight*1.1
 
     -- Insert objects into the scene group in order to ONLY be associated with this scene
-    sceneGroup:insert( beetleship )
+    sceneGroup:insert( companyLogo )
 
 end -- function scene:create( event )
 
@@ -93,10 +105,10 @@ function scene:show( event )
         jungleSoundsChannel = audio.play(jungleSounds )
 
         -- Call the moveBeetleship function as soon as we enter the frame.
-        Runtime:addEventListener("enterFrame", moveBeetleship)
+        Runtime:addEventListener("enterFrame", MoveLogo)
 
         -- Go to the main menu screen after the given time.
-        timer.performWithDelay ( 3000, gotoMainMenu)          
+        timer.performWithDelay ( 9500, gotoMainMenu)          
         
     end
 
