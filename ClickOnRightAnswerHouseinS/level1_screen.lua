@@ -80,7 +80,8 @@ local alreadyClickedAnswer = false
 -----------------------------------------------------------------------------------------
 -- SOUND
 -----------------------------------------------------------------------------------------
-
+local correctSound = audio.loadSound("CorrectAnswerOld.mp3")
+local correctSoundChannel
 
 -----------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
@@ -179,10 +180,14 @@ local function TouchListenerAnswer(touch)
             correct.isVisible = true
             -- increase the number correct by 1
             numberCorrect = numberCorrect + 1
+            -- plays correct sound
+            correctSoundChannel = audio.play(correctSound)
             -- call RestartScene after 1 second
             timer.performWithDelay( 1000, RestartScene )
+            if (numberCorrect == 2) then
+                composer.gotoScene("you_win")
+            end
         end        
-
     end
 end
 
