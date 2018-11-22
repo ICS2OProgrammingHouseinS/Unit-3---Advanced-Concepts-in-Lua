@@ -55,8 +55,10 @@ local character
 local heart1
 local heart2
 local numLives = 2
+local answered = 0
 
-local rArrow 
+local rArrow
+local lArrow
 local uArrow
 
 local motionx = 0
@@ -85,6 +87,12 @@ local function right (touch)
     character.xScale = 1
 end
 
+-- When left arrow is touched, move character left
+local function left (touch)
+    motionx = -SPEED
+    character.xScale = -1
+end
+
 -- When up arrow is touched, add vertical so it can jump
 local function up (touch)
     if (character ~= nil) then
@@ -107,11 +115,13 @@ end
 
 local function AddArrowEventListeners()
     rArrow:addEventListener("touch", right)
+    lArrow:addEventListener("touch", left)
     uArrow:addEventListener("touch", up)
 end
 
 local function RemoveArrowEventListeners()
     rArrow:removeEventListener("touch", right)
+    lArrow:addEventListener("touch", left)
     uArrow:removeEventListener("touch", up)
 end
 
@@ -216,6 +226,9 @@ local function onCollision( self, event )
             -- stop the character from moving
             motionx = 0
 
+            -- add 1 to answered variable
+            answered = answered + 1
+
             -- make the character invisible
             character.isVisible = false
 
@@ -227,9 +240,8 @@ local function onCollision( self, event )
         end
 
         if (event.target.myName == "door") then
-            --check to see if the user has answered 5 questions
-            if (questionsAnswered == 3) then
-                -- after getting 3 questions right, go to the you win screen
+            if (answered == 2) then
+                composer.gotoScene( "you_win" )
             end
         end        
 
@@ -454,9 +466,17 @@ function scene:create( event )
     rArrow = display.newImageRect("Images/RightArrowUnpressed.png", 100, 50)
     rArrow.x = display.contentWidth * 9.2 / 10
     rArrow.y = display.contentHeight * 9.5 / 10
-   
+
     -- Insert objects into the scene group in order to ONLY be associated with this scene
     sceneGroup:insert( rArrow)
+
+    --Insert the left arrow
+    lArrow = display.newImageRect("Images/LeftArrowUnpressed.png", 100, 50)
+    lArrow.x = display.contentWidth * 7.2 / 10
+    lArrow.y = display.contentHeight * 9.5 / 10  
+
+    -- Insert objects into the scene group in order to ONLY be associated with this scene
+    sceneGroup:insert( lArrow)
 
     --Insert the left arrow
     uArrow = display.newImageRect("Images/UpArrowUnpressed.png", 50, 100)
