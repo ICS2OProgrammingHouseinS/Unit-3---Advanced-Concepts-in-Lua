@@ -54,7 +54,8 @@ local character
 
 local heart1
 local heart2
-local numLives = 2
+local heart3
+local numLives = 4
 local answered = 0
 
 local rArrow
@@ -64,7 +65,7 @@ local uArrow
 local motionx = 0
 local SPEED = 6
 local LINEAR_VELOCITY = -105
-local GRAVITY = 8
+local GRAVITY = 7
 
 local leftW
 local rightW
@@ -168,6 +169,7 @@ end
 local function MakeHeartsVisible()
     heart1.isVisible = true
     heart2.isVisible = true
+    heart3.isVisible = true
 end
 
 local function YouLoseTransition()
@@ -203,16 +205,22 @@ local function onCollision( self, event )
             -- decrease number of lives
             numLives = numLives - 1
 
-            if (numLives == 1) then
+            if (numLives == 3) then
                 -- update hearts
-                heart1.isVisible = true
-                heart2.isVisible = false
+                heart1.isVisible = false
+                heart2.isVisible = true
+                heart3.isVisible = true
                 timer.performWithDelay(200, ReplaceCharacter) 
-
-            elseif (numLives == 0) then
+            elseif (numLives == 2) then
+                heart1.isVisible = false
+                heart2.isVisible = false
+                heart3.isVisible = true
+                timer.performWithDelay(200, ReplaceCharacter) 
+            elseif (numLives == 1) then              
                 -- update hearts
                 heart1.isVisible = false
                 heart2.isVisible = false
+                heart3.isVisible = false
                 timer.performWithDelay(200, YouLoseTransition)
             end
         end
@@ -461,6 +469,15 @@ function scene:create( event )
 
     -- Insert objects into the scene group in order to ONLY be associated with this scene
     sceneGroup:insert( heart2 )
+
+        -- Insert the Hearts
+    heart3 = display.newImageRect("Images/heart.png", 80, 80)
+    heart3.x = 210
+    heart3.y = 50
+    heart3.isVisible = true
+
+    -- Insert objects into the scene group in order to ONLY be associated with this scene
+    sceneGroup:insert( heart3 )
 
     --Insert the right arrow
     rArrow = display.newImageRect("Images/RightArrowUnpressed.png", 100, 50)
