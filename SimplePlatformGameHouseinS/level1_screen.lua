@@ -52,10 +52,10 @@ local door
 local door
 local character
 
-local heart1
-local heart2
-local heart3
-local numLives = 4
+ heart1 = nil
+ heart2 = nil
+ heart3 = nil
+ numLives = 4
 local answered = 0
 
 local rArrow
@@ -205,18 +205,18 @@ local function onCollision( self, event )
             -- decrease number of lives
             numLives = numLives - 1
 
-            if (numLives == 3) then
+            if (numLives == 1) then
                 -- update hearts
                 heart1.isVisible = false
                 heart2.isVisible = true
                 heart3.isVisible = true
                 timer.performWithDelay(200, ReplaceCharacter) 
-            elseif (numLives == 2) then
+            elseif (numLives == 0) then
                 heart1.isVisible = false
                 heart2.isVisible = false
                 heart3.isVisible = true
                 timer.performWithDelay(200, ReplaceCharacter) 
-            elseif (numLives == 1) then              
+            elseif (numLives == -1) then              
                 -- update hearts
                 heart1.isVisible = false
                 heart2.isVisible = false

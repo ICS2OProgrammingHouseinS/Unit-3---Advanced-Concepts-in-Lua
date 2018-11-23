@@ -64,6 +64,10 @@ local textTouched = false
 --LOCAL FUNCTIONS
 -----------------------------------------------------------------------------------------
 
+local function YouLoseTransition()
+    composer.gotoScene( "you_lose" )
+end
+
 --making transition to next scene
 local function BackToLevel1() 
     composer.hideOverlay("crossFade", 400 )
@@ -86,6 +90,25 @@ end
 --checking to see if the user pressed the right answer and bring them back to level 1
 local function TouchListenerWrongAnswer(touch)
     userAnswer = wrongText1.text
+    numLives = numLives - 1
+                if (numLives == 1) then
+                -- update hearts
+                heart1.isVisible = false
+                heart2.isVisible = true
+                heart3.isVisible = true
+                timer.performWithDelay(200, ReplaceCharacter) 
+            elseif (numLives == 0) then
+                heart1.isVisible = false
+                heart2.isVisible = false
+                heart3.isVisible = true
+                timer.performWithDelay(200, ReplaceCharacter) 
+            elseif (numLives == -1) then              
+                -- update hearts
+                heart1.isVisible = false
+                heart2.isVisible = false
+                heart3.isVisible = false
+                timer.performWithDelay(200, YouLoseTransition)
+            end
     
     if (touch.phase == "ended") then
         
@@ -98,6 +121,25 @@ end
 --checking to see if the user pressed the right answer and bring them back to level 1
 local function TouchListenerWrongAnswer2(touch)
     userAnswer = wrongText2.text
+    numLives = numLives - 1
+                if (numLives == 1) then
+                -- update hearts
+                heart1.isVisible = false
+                heart2.isVisible = true
+                heart3.isVisible = true
+                timer.performWithDelay(200, ReplaceCharacter) 
+            elseif (numLives == 0) then
+                heart1.isVisible = false
+                heart2.isVisible = false
+                heart3.isVisible = true
+                timer.performWithDelay(200, ReplaceCharacter) 
+            elseif (numLives == -1) then              
+                -- update hearts
+                heart1.isVisible = false
+                heart2.isVisible = false
+                heart3.isVisible = false
+                timer.performWithDelay(200, YouLoseTransition)
+            end
     
     if (touch.phase == "ended") then
 
@@ -109,6 +151,25 @@ end
 --checking to see if the user pressed the right answer and bring them back to level 1
 local function TouchListenerWrongAnswer3(touch)
     userAnswer = wrongText3.text
+    numLives = numLives - 1
+                if (numLives == 1) then
+                -- update hearts
+                heart1.isVisible = false
+                heart2.isVisible = true
+                heart3.isVisible = true
+                timer.performWithDelay(200, ReplaceCharacter) 
+            elseif (numLives == 0) then
+                heart1.isVisible = false
+                heart2.isVisible = false
+                heart3.isVisible = true
+                timer.performWithDelay(200, ReplaceCharacter) 
+            elseif (numLives == -1) then              
+                -- update hearts
+                heart1.isVisible = false
+                heart2.isVisible = false
+                heart3.isVisible = false
+                timer.performWithDelay(200, YouLoseTransition)
+            end
     
     if (touch.phase == "ended") then
 
