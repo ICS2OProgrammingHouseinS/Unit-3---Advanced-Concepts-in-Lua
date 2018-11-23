@@ -91,18 +91,18 @@ end
 local function TouchListenerWrongAnswer(touch)
     userAnswer = wrongText1.text
     numLives = numLives - 1
-                if (numLives == 1) then
+                if (numLives == 0) then
                 -- update hearts
                 heart1.isVisible = false
                 heart2.isVisible = true
                 heart3.isVisible = true
                 timer.performWithDelay(200, ReplaceCharacter) 
-            elseif (numLives == 0) then
+            elseif (numLives == -1) then
                 heart1.isVisible = false
                 heart2.isVisible = false
                 heart3.isVisible = true
                 timer.performWithDelay(200, ReplaceCharacter) 
-            elseif (numLives == -1) then              
+            elseif (numLives == -2) then              
                 -- update hearts
                 heart1.isVisible = false
                 heart2.isVisible = false
@@ -122,18 +122,18 @@ end
 local function TouchListenerWrongAnswer2(touch)
     userAnswer = wrongText2.text
     numLives = numLives - 1
-                if (numLives == 1) then
+                if (numLives == 0) then
                 -- update hearts
                 heart1.isVisible = false
                 heart2.isVisible = true
                 heart3.isVisible = true
                 timer.performWithDelay(200, ReplaceCharacter) 
-            elseif (numLives == 0) then
+            elseif (numLives == -1) then
                 heart1.isVisible = false
                 heart2.isVisible = false
                 heart3.isVisible = true
                 timer.performWithDelay(200, ReplaceCharacter) 
-            elseif (numLives == -1) then              
+            elseif (numLives == -2) then              
                 -- update hearts
                 heart1.isVisible = false
                 heart2.isVisible = false
@@ -152,18 +152,18 @@ end
 local function TouchListenerWrongAnswer3(touch)
     userAnswer = wrongText3.text
     numLives = numLives - 1
-                if (numLives == 1) then
+                if (numLives == 0) then
                 -- update hearts
                 heart1.isVisible = false
                 heart2.isVisible = true
                 heart3.isVisible = true
                 timer.performWithDelay(200, ReplaceCharacter) 
-            elseif (numLives == 0) then
+            elseif (numLives == -1) then
                 heart1.isVisible = false
                 heart2.isVisible = false
                 heart3.isVisible = true
                 timer.performWithDelay(200, ReplaceCharacter) 
-            elseif (numLives == -1) then              
+            elseif (numLives == -2) then              
                 -- update hearts
                 heart1.isVisible = false
                 heart2.isVisible = false

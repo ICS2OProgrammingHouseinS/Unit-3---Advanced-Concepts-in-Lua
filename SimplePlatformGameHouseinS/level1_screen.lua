@@ -172,7 +172,7 @@ local function MakeHeartsVisible()
     heart3.isVisible = true
 end
 
-local function YouLoseTransition()
+function YouLoseTransition()
     composer.gotoScene( "you_lose" )
 end
 
