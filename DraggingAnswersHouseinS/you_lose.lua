@@ -21,7 +21,7 @@ local widget = require( "widget" )
 -----------------------------------------------------------------------------------------
 
 -- Naming Scene
-sceneName = "you_win"
+sceneName = "you_lose"
 
 -- Creating Scene Object
 local scene = composer.newScene( sceneName ) -- This function doesn't accept a string, only a variable containing a string
@@ -29,8 +29,8 @@ local scene = composer.newScene( sceneName ) -- This function doesn't accept a s
 -----------------------------------------------------------------------------------------
 -- SOUNDS
 -----------------------------------------------------------------------------------------
-local winSound = audio.loadSound("Sounds/yabbadabbalaugh.wav")
-local winSoundChannel = audio.play(winSound)
+local loseSound = audio.loadSound("Sounds/boo.mp3")
+local loseSoundChannel = audio.play(loseSound)
 
 -----------------------------------------------------------------------------------------
 -- DISPLAY OBJECTS
@@ -48,7 +48,7 @@ function scene:create( event )
     -----------------------------------------------------------------------------------------
 
     -- Insert the background image and set it to the center of the screen
-    bkg_image = display.newImage("Images/Winscreen.png")
+    bkg_image = display.newImage("Images/Losescreen.png")
     bkg_image.x = display.contentCenterX
     bkg_image.y = display.contentCenterY
     bkg_image.width = display.contentWidth
@@ -80,9 +80,6 @@ function scene:show( event )
         -- Called when the scene is now on screen.
         -- Insert code here to make the scene come alive.
         -- Example: start timers, begin animation, play audio, etc.
-
-        -- plays win sound
-
     end
 
 end -- function scene:show( event )

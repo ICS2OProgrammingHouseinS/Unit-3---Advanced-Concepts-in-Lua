@@ -30,7 +30,8 @@ local scene = composer.newScene( sceneName )
 
 -- local variables for the scene
 local bkg
-
+local loseSound = audio.loadSound("Sounds/BoingSoundEffect.mp3")
+local loseSoundChannel = audio.play(loseSound)
 ----------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
