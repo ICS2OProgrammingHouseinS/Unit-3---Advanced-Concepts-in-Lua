@@ -119,7 +119,7 @@ local function DetermineAlternateAnswers()
     alternateAnswerBox2.text = alternateAnswer2
 
      -- generate incorrect answer and set it in the textbox
-    alternateAnswer3 = 0
+    alternateAnswer3 = correctAnswer - math.random(3, 7)
     alternateAnswerBox3.text = alternateAnswer3
 
 -------------------------------------------------------------------------------------------
@@ -148,7 +148,7 @@ local function PositionAnswers()
         answerbox.y = display.contentHeight * 0.4
 
         --alternateAnswerBox3
-        alternateAnswerBox3.y = display.contentHeight * 0.85
+        alternateAnswerBox3.y = 200
 
         --alternateAnswerBox2
         alternateAnswerBox2.y = display.contentHeight * 0.70
@@ -169,7 +169,7 @@ local function PositionAnswers()
         answerbox.y = display.contentHeight * 0.55
 
         --alternateAnswerBox3
-        alternateAnswerBox3.y = display.contentHeight * 0.1
+        alternateAnswerBox3.y = 200
         
         --alternateAnswerBox2
         alternateAnswerBox2.y = display.contentHeight * 0.4
@@ -188,7 +188,7 @@ local function PositionAnswers()
         answerbox.y = display.contentHeight * 0.70
 
         --alternateAnswerBox2
-        alternateAnswerBox3.y = display.contentHeight * 0.7
+        alternateAnswerBox3.y = 200
 
         --alternateAnswerBox2
         alternateAnswerBox2.y = display.contentHeight * 0.55
