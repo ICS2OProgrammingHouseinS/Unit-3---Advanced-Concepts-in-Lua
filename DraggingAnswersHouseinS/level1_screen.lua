@@ -34,6 +34,9 @@ local soccerball
 -- Creates the lives variable
 local lives = 3
 
+-- Creates points variable
+local points
+
 --the text that displays the question
 local questionText 
 
@@ -232,6 +235,13 @@ local function TouchListenerAnswerbox(touch)
 
             --let other boxes know it has been clicked
             answerboxAlreadyTouched = true
+
+            -- Adds 1 to points
+            points = points + 1
+
+        elseif (points == 3) then
+            YouWinTransitionLevel1
+        end
 
         --drag the answer to follow the mouse
         elseif (touch.phase == "moved") then
